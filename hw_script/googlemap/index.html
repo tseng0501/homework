@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>口罩地圖</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map;
+        const url = 'https://findmasks.herokuapp.com/places'; //market.json
+
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                for (var i = 0; i <= data.features.length; i++) {
+                    var num = data.features[i].geometry["coordinates"];
+                    var store = { lat: num[1], lng: num[0] };
+                    // console.log(store);
+
+                    console.log(data);
+
+                    var adult = data.features[i].properties.masksLeft;
+                    var child = data.features[i].properties.childMasksLeft;
+                    var name = data.features[i].properties.name;
+
+                    if (adult == 0 && child == 0) {
+                       
+                        marker = new google.maps.Marker({
+                            position: store,
+                            map: map,
+                            icon: {
+                                url: 'sad.png',
+                                scaledSize: new google.maps.Size(30, 30)
+                            },
+                            title: `店名:${name}\n大人:${adult}\n小孩:${child}`
+                        });
+                    } else {
+                        marker = new google.maps.Marker({
+                            position: store,
+                            map: map,
+                            icon: {
+                                url: 'smile.png',
+                                scaledSize: new google.maps.Size(30, 30)
+                            },
+                            title: `店名:${name}\n大人:${adult}\n小孩:${child}`
+                        });
+                    }
+                }
+
+            })
+            .catch((error) => {
+                // Handle the error
+            });
+
+        function initMap() {
+            var myLatLng = { lat: 24.75731057731903, lng: 120.9524620930296 };//lat 緯度 
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7,
+                center: myLatLng
+            });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap"
+        async defer></script>
+
+
+</body>
+
+</html>

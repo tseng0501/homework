@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>iphone</title>
+    <style>
+        .img {
+            width: 400px;
+            height: 200px;
+
+        }
+
+        .img img {
+            width: 60%;
+            text-align: center;
+        }
+
+        body {
+            text-align: center;
+        }
+        span button {
+            background-color: white;
+            border-radius: 6px;
+            border: gray solid .7px;
+            width: 100px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+    
+
+        .img button {
+            width: 100px;
+            margin-right: 20px;
+            background-color: white;
+            border: gray solid 0.4px;
+            padding: 5px;
+        }
+
+        .img button:hover {
+            background-color: #faa;
+            border: none;
+            
+            color: white;
+        }
+
+        div {
+            margin: auto;
+          
+        }
+     
+   
+    </style>
+</head>
+
+<body>
+    <span>
+        <button onclick="Createiphone()">Iphone</button>
+        <button onclick="Createipad()">iPad</button>
+        <button onclick="Createmacpro()">Mac</button>
+    </span>
+
+
+    <div class="img" id="">
+        <img src="" alt="">
+    </div>
+
+    <script>
+        var products = {
+            iphone: {
+                p1: { id: "p1", color: "red", price: "NT24900", storage: "64G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/iphone-red.png" },
+                p2: { id: "p2", color: "yellow", price: "NT26900", storage: "128G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/iphone-yellow.png" },
+                p3: { id: "p3", color: "black", price: "NT30400", storage: "256G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/iphone-black.png" }
+            },
+            iPad: {
+                p1: { id: "p1", color: "gray", price: "NT10900", storage: "32G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/ipad-space.png" },
+                p2: { id: "p2", color: "silver", price: "NT13900", storage: "128G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/ipad-silver.png" },
+                p3: { id: "p3", color: "gold", price: "NT13900", storage: "128G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/ipad-gold.png" }
+            },
+            Mac: {
+                p1: { id: "p1", color: "gray", price: "NT51300", storage: "256G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/mbp13touch-space.png" },
+                p2: { id: "p2", color: "silver", price: "NT57300", storage: "512G", network: "wifi", url: "https://bs2020-01.azurewebsites.net/Fake-Apple/img/mbp13touch-silver.png" }
+            }
+        };
+
+        // var body = document.querySelector('body');
+        var div = document.getElementsByClassName('img')[0];
+
+        function Createiphone() {
+            div.innerHTML = '';
+            var img = document.createElement('img');
+            img.src = 'https://bs2020-01.azurewebsites.net/Fake-Apple/img/iphone11-select-2019-family.png';
+            div.appendChild(img);
+            var h2 = document.createElement('h2');
+            h2.innerHTML = '顏色';
+            div.appendChild(h2);
+
+            var btn_red = document.createElement('button');
+            var btn_yellow = document.createElement('button');
+            var btn_black = document.createElement('button');
+            btn_red.innerHTML = 'red';
+            btn_yellow.innerHTML = 'yellow';
+            btn_black.innerHTML = 'black';
+
+            btn_red.onclick = function red() {
+                img.src = products.iphone.p1.url;
+            }
+            btn_yellow.onclick = function yellow() {
+                img.src = products.iphone.p2.url;
+            }
+            btn_black.onclick = function black() {
+                img.src = products.iphone.p3.url;
+            }
+            div.appendChild(btn_red);
+            div.appendChild(btn_yellow);
+            div.appendChild(btn_black);
+
+            var h2_format = document.createElement('h2');
+            h2_format.innerHTML = '規格';
+            div.appendChild(h2_format);
+            var btn_64g = document.createElement('button');
+            var btn_128g = document.createElement('button');
+            var btn_256g = document.createElement('button');
+            btn_64g.innerHTML = '64GB NT$24900';
+            btn_128g.innerHTML = '128GB NT26900';
+            btn_256g.innerHTML = '256GB NT$30400';
+
+            div.appendChild(btn_64g);
+            div.appendChild(btn_128g);
+            div.appendChild(btn_256g);
+
+            btn_64g.onclick = function Set64G() {
+                h2_num.innerText = products.iphone.p1.price;
+            }
+            btn_128g.onclick = function Set128G() {
+                h2_num.innerText = products.iphone.p2.price;
+            }
+            btn_256g.onclick = function Set256G() {
+                h2_num.innerText = products.iphone.p3.price;
+            }
+
+            var h2_price = document.createElement('h2');
+            h2_price.innerHTML = '價格試算';
+            div.appendChild(h2_price);
+
+            var h2_num = document.createElement('h2');
+            h2_num.innerHTML = '';
+            div.appendChild(h2_num);
+        }
+
+        function Createipad() {
+            div.innerText = '';
+            var img = document.createElement('img');
+            img.src = 'https://bs2020-01.azurewebsites.net/Fake-Apple/img/ipad-hero-unselected-201909_GEO_TW.png';
+            div.appendChild(img);
+            var h2 = document.createElement('h2');
+            h2.innerHTML = '顏色';
+            div.appendChild(h2);
+            var btn_gray = document.createElement('button');
+            var btn_silver = document.createElement('button');
+            var btn_gold = document.createElement('button');
+            btn_gray.innerHTML = 'gray';
+            btn_silver.innerHTML = 'silver';
+            btn_gold.innerHTML = 'gold';
+            div.appendChild(btn_gray);
+            div.appendChild(btn_silver);
+            div.appendChild(btn_gold);
+            btn_gray.onclick = function gray() {
+                img.src = products.iPad.p1.url;
+            }
+            btn_silver.onclick = function silver() {
+                img.src = products.iPad.p2.url;
+            }
+            btn_gold.onclick = function gold() {
+                img.src = products.iPad.p3.url;
+            }
+
+
+            var h2_format = document.createElement('h2');
+            h2_format.innerHTML = '規格';
+            div.appendChild(h2_format);
+            var btn_32g = document.createElement('button');
+            var btn_128g = document.createElement('button');
+
+            btn_32g.innerHTML = '32GB NT$24900';
+            btn_128g.innerHTML = '128GB NT26900';
+
+            btn_32g.onclick = function Set32G() {
+                h2_num.innerText = products.iPad.p1.price;
+            }
+            btn_128g.onclick = function Set128G() {
+                h2_num.innerText = products.iPad.p2.price;
+            }
+
+            div.appendChild(btn_32g);
+            div.appendChild(btn_128g);
+
+
+            var h2_price = document.createElement('h2');
+            h2_price.innerHTML = '價格試算';
+            div.appendChild(h2_price);
+
+            var h2_num = document.createElement('h2');
+            h2_num.innerHTML = '';
+            div.appendChild(h2_num);
+        }
+
+        function Createmacpro() {
+            div.innerText = '';
+            var img = document.createElement('img');
+            img.src = 'https://bs2020-01.azurewebsites.net/Fake-Apple/img/mbp13touch-space-gallery1-201907.png';
+            div.appendChild(img);
+            var h2 = document.createElement('h2');
+            h2.innerHTML = '顏色';
+            div.appendChild(h2);
+
+            var btn1 = document.createElement('button');
+            var btn2 = document.createElement('button');
+
+            btn1.innerHTML = 'gray';
+            btn2.innerHTML = 'silver';
+            btn1.onclick = function btn1() {
+                img.src = products.Mac.p1.url;
+            }
+            btn2.onclick = function btn2() {
+                img.src = products.Mac.p2.url;
+            }
+            div.appendChild(btn1);
+            div.appendChild(btn2);
+
+            var h2_format = document.createElement('h2');
+            h2_format.innerHTML = '規格';
+            div.appendChild(h2_format);
+            var btn3 = document.createElement('button');
+            var btn4 = document.createElement('button');
+
+            btn3.innerHTML = '256GB NT$51300';
+            btn4.innerHTML = '512GB NT57300';
+
+            btn3.onclick = function Set256G() {
+                h2_num.innerText = products.Mac.p1.price;
+            }
+            btn4.onclick = function Set512G() {
+                h2_num.innerText = products.Mac.p2.price;
+            }
+
+            div.appendChild(btn3);
+            div.appendChild(btn4);
+
+
+            var h2_price = document.createElement('h2');
+            h2_price.innerHTML = '價格試算';
+            div.appendChild(h2_price);
+
+            var h2_num = document.createElement('h2');
+            h2_num.innerHTML = '';
+            div.appendChild(h2_num);
+        }
+
+
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- ------------------------------------------------ -->
+</body>
+
+</html>

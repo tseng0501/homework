@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/83fb5d23dd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>計算機</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: 0;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+        #head {
+            margin-top: 20px;
+            justify-content: center;
+        }
+        #head .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 40px;
+        }
+        #num_btn button {
+            width: 70px;
+            height: 70px;
+            margin-top: 10px;
+            color: white;
+            background-color: black;
+        }
+        #num_btn button:hover {
+            background-color: white;
+            color: black;
+        }
+        #num_btn {
+            margin-top: 30px;
+            text-align: center;
+        }
+        #history{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <h2>計算機</h2>
+    <div class="container" id="history">
+        <div class="row">
+            <h4>歷史紀錄</h4>
+        </div>
+    </div>
+    <div class="container" id="head">
+        <div class="row">
+            <input type="text" id="textinput" style="text-align: right;">
+        </div>
+    </div>
+    <div class="container" id="num_btn">
+        <div class="row">
+            <div class="col " id="acc">
+                <button onclick="percentage()">%</button>
+                <button onclick="ac()">AC</button>
+                <button onclick="c()">C</button>
+                <button onclick="backspace()"><i class="fas fa-backspace" style="font-size: 12px;"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="OneToNine">1</button>
+                <button class="OneToNine">2</button>
+                <button class="OneToNine">3</button>
+                <button onclick="except()">/</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="OneToNine">4</button>
+                <button class="OneToNine">5</button>
+                <button class="OneToNine">6</button>
+                <button onclick="mul()">*</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="OneToNine">7</button>
+                <button class="OneToNine">8</button>
+                <button class="OneToNine">9</button>
+                <button onclick="less()">-</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button onclick="point()">.</button>
+                <button onclick="Zero()">0</button>
+                <button onclick="ans()">=</button>
+                <button onclick="add()">+</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var input = document.querySelector('input');
+        input.value = Number(0);
+        var oper = false;
+        var context = false;
+        var zerocontrol = false;
+        var hto = document.querySelector('h4');
+        let OneToNines = document.querySelectorAll('.OneToNine');
+        OneToNines.forEach((item) => {
+            item.onclick = function (e) {
+                OneToNine(e.target.innerText);
+            }
+        });
+        function OneToNine(text) {
+            if (input.value === '0') {
+                input.value = text;
+                oper = false;
+                context = true;
+                zerocontrol = true;
+            }
+            else {
+                input.value += text;
+                oper = false;
+                context = true;
+                zerocontrol = true;
+            }
+        }
+        function Zero() {
+            if (zerocontrol == true) {
+                input.value += 0;
+            }
+        }
+        function percentage(){
+            input.value = input.value/100;
+        }
+        function ac() {
+            input.value = 0
+            hto.innerText = '歷史紀錄';
+            zerocontrol = false;
+        }
+        function c() {
+            input.value = 0
+            zerocontrol = false;
+        }
+        function backspace(){
+            if(input.value.length!=0){
+                if(input.value.length==1){
+                    input.value = 0;
+                }
+                else{
+                    input.value = input.value.toString().substring(0, input.value.length-1);
+                }
+            }
+        }
+        function add() {
+            if (oper == false) {
+                input.value += '+';
+                oper = true;
+            }
+        }
+        function less() {
+            if (oper == false) {
+                input.value += '-';
+                oper = true;
+            }
+        }
+        function mul() {
+            if (oper == false) {
+                input.value += '*';
+                oper = true;
+            }
+        }
+        function except() {
+            if (oper == false) {
+                input.value += '/';
+                oper = true;
+            }
+        }
+        function point() {
+            if (!input.value.includes('.')) {
+                input.value += '.';
+                zerocontrol = true;
+            }
+            else if (oper == true) {
+                input.value += '.';
+                oper = false;
+                zerocontrol = true;
+            }
+        }
+        function ans() {
+            hto.innerText = input.value;
+            input.value = eval(input.value);
+        }
+    </script>
+</body>
+</html>

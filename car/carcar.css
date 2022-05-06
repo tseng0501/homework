@@ -1,0 +1,85 @@
+.wrap {
+    width: 960px;
+}
+
+.top {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    background-color: black;
+    margin: 30px;
+    top: 0;
+    right: 0;
+    left: 0;
+    color: white;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.top ul {
+    list-style: none;
+    display: flex;
+}
+
+.top li {
+    padding: 0px 30px 0px 30px;
+    font-size: 20px;
+}
+
+.cartop {
+    position: relative;
+    margin: auto;
+    width: 960px;
+    height: 860px;
+    /* background-color: blue; */
+}
+
+.background {
+    position: absolute;
+    background-color: gray;
+    /* margin: 50px; */
+    top: 200px;
+    right: 70px;
+    width: 320px;
+    height: 200px;
+    opacity: .4;
+    z-index:-1;
+}
+.center img {
+    position: relative;
+    width: 60%;
+    height: 50%;
+    top: 280px;
+    left: 220px;
+    z-index: -1;
+}
+.pictop img {
+    position: absolute;
+    width: 30%;
+    height: 42%;
+    top: 150px;
+    left: 90px;
+    z-index:1;
+}
+.pictop img {
+    position: absolute;
+    width: 30%;
+    height: 42%;
+    top: 150px;
+    right: 30px;
+
+}
+.carbuttom img {
+    position: absolute;
+    width: 60%;
+    height: 20%;
+    top: 600px;
+    right: 150px;
+
+}
+.carright{
+    position: absolute;
+    top:420px;
+    right:150px;
+}

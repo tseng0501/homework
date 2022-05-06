@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>終極密碼猜數字</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: 0;
+        }
+        #number{
+            border: black solid;
+            text-align: center;
+            margin-top: 50px;
+            padding: 50px 0;
+        }
+        #btn .col{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        #btn button{
+            background-color: rgb(26, 102, 201);
+            color: white;
+            width: 160px;
+            border: none;
+        }
+        #num_btn{
+            text-align: center;
+            margin-top: 20px;
+        }
+        #num_btn button{
+            width: 50px;
+            height: 50px;
+            margin-top: 5px;
+            color: white;
+            background-color: black;
+        }
+        #num_btn :nth-child(4) :nth-child(1){
+            color: red;
+        }
+        #num_btn :nth-child(4) :nth-child(3){
+            color: green;
+        }
+
+    </style>
+  </head>
+  <body>
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- ----------------------------------------- -->
+
+  <div class="container" id="number">
+      <div class="row">
+          <div class="col">
+              <h1>0~100</h1>
+          </div>
+      </div>
+  </div>
+  <div class="container" id="btn">
+      <div class="row">
+        <div class="col">
+            <button onclick="crandom()">產生數字</button>
+            <input type="text" >
+        </div>
+      </div>
+  </div>
+  <div class="container" id="num_btn">
+      <div class="row">
+          <div class="col">
+                <button onclick="one()">1</button>
+                <button onclick="two()">2</button>
+                <button onclick="three()">3</button>
+          </div>         
+      </div>
+      <div class="row">
+        <div class="col">
+              <button onclick="four()">4</button>
+              <button onclick="five()">5</button>
+              <button onclick="six()">6</button>
+        </div>         
+    </div>
+    <div class="row">
+        <div class="col">
+              <button onclick="seven()">7</button>
+              <button onclick="eight()">8</button>
+              <button onclick="nine()">9</button>
+        </div>         
+    </div>
+    <div class="row">
+        <div class="col">
+              <button onclick="clearinput()">X</button>
+              <button onclick="zero()">0</button>
+              <button onclick="ok()">V</button>
+        </div>         
+    </div>
+  </div>
+
+
+  <script>
+       var userinput = document.querySelector('input');
+        var rnd;
+        var h1;
+
+        function crandom() {
+            userinput.value = null;
+            rnd = Math.floor(Math.random() * 100);
+            h1 = document.querySelector('h1');
+    
+            alert('一個隨機數字已產生，猜猜看');
+            h1.innerHTML = '0~100';
+            max = 100;
+            min = 0;
+        }
+
+        function one() {
+            userinput.value += '1';
+        }
+        function two() {
+            userinput.value += '2';
+        }
+        function three() {
+            userinput.value += '3';
+        }
+        function four() {
+            userinput.value += '4';
+        }
+        function five() {
+            userinput.value += '5';
+        }
+        function six() {
+            userinput.value += '6';
+        }
+        function seven() {
+            userinput.value += '7';
+        }
+        function eight() {
+            userinput.value += '8';
+        }
+        function nine() {
+            userinput.value += '9';
+        }
+        function clearinput() {
+            userinput.value = null;
+        }
+        function zero() {
+            userinput.value += '0';
+        }
+
+        function dummy() {
+            if (!(userinput.value < min || userinput.value > max)) {
+                alert('請輸入範圍內數字');
+                continue;
+            }
+        }
+        var max = 100;
+        var min = 0;
+        function ok() {
+            if (rnd == null) {
+                alert('請先按開始按鈕!');
+            }
+            else if(userinput.value==''){
+                alert('請輸入0~100');
+            }
+            else if (!(userinput.value < min || userinput.value > max)) {
+                if (userinput.value < rnd ) {
+                    min = userinput.value;
+                    h1.innerHTML = `${min}~${max}`;
+                }
+                else if (userinput.value > rnd && userinput.value<100) {
+                    max = userinput.value;
+                    h1.innerHTML = `${min}~${max}`;
+                }
+                else if (userinput.value == rnd) {
+                    alert('Correct!');
+                    crandom();
+                }
+                else if (userinput.value > 100 || userinput.value < 0) {
+                    alert('請輸入0~100');
+                }
+            }
+            else if (userinput.value > 100 || userinput.value < 0) {
+                alert('請輸入0~100');
+            }
+            else {
+                alert('請輸入範圍內數字!');
+            
+            }
+            Clear();
+        }
+  </script>
+</body>
+</html>

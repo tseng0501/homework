@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Taiwan Address</title>
+  <script src="../modules/myhelper.js"></script>
+  <style>
+    table {
+      border: 1px solid #faa;
+
+    }
+    .btn-group{     
+      width: 100%;
+      text-align: center;
+    
+    }
+    .btn-group button{
+      margin: auto;
+      margin-bottom: 10px;
+    }
+    th,
+    td {
+      border: 1px solid gray;
+      padding: 5px 60px;
+      text-align: center;
+    }
+    h1{
+      text-align: center;
+      color: #faa;
+      margin-top: 10px;
+      font-size: 50px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Taiwan Address</h1>
+  
+  <div class="btn-group">
+    <button>取得資料</button>
+  </div>
+
+  <table>
+    <thead>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <template id="templatethead">
+    <tr>
+      <th>縣市</th>
+      <th>地區</th>
+      <th>郵遞區號</th>
+    </tr>
+  </template>
+  <template id="templateRow">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </template>
+
+  <script>
+    let btn = $g("button");
+    let thead = $g('thead');
+    let tdbody = $g("tbody");
+    let table = $g("table");
+    table.setAttribute('align', 'center');
+    let zipCodeArray;
+
+    let ZipCode = [];
+    btn.onclick = function () {
+      let xhr = new XMLHttpRequest;
+      xhr.onload = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          zipcodeArray = JSON.parse(this.responseText);
+          addthead();
+          tdbody.innerHTML = "";
+          zipcodeArray.forEach((item, index) => {
+            let _city = item.CityName;
+            let _districts = [];
+            let _cityObject = { City: _city, Districts: _districts };
+            item.AreaList.forEach((item, index) => {
+              _districts.push({ District: item.AreaName, ZipCode: item.ZipCode });
+            })
+            ZipCode.push(_cityObject);
+            addbody(_cityObject);
+          })
+
+        } else {
+        }
+      }
+      xhr.open("GET", "http://127.0.0.1:5500/taiwan/taiwanaddress.json");
+      xhr.send();
+    }
+
+    function addthead() {
+      thead.innerHTML ="";
+      let templatethead = $g('#templatethead');
+      let con = templatethead.content.cloneNode(true);
+      thead.appendChild(con);
+    }
+
+    function addbody(data) {
+      let templateRow = $g('#templateRow');
+      for (let j = 0; j < data.Districts.length; j++) {
+        let con = templateRow.content.cloneNode(true);
+        let td = con.querySelectorAll('td');
+        td[0].textContent = data.City;
+        td[1].textContent = data.Districts[j].District;
+        td[2].textContent = data.Districts[j].ZipCode;
+        tdbody.appendChild(con);
+      }
+
+    }
+
+  </script>
+
+
+
+  <!-- =================================================== -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

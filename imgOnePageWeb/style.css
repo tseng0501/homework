@@ -1,0 +1,442 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.topp{
+position: relative;   
+/* width: 100%; */
+height: 70px;
+line-height: 50px;
+padding-left: 100px;
+border-bottom:0.1px rgb(221, 207, 207) solid;
+z-index: 2;
+}     
+.head-top a{
+font-size: 20px;
+right: 0;
+text-decoration: none;
+color: black;
+margin: 5px;
+}
+.head-bottum a{
+font-size: 15px;
+}
+.head-top{
+position: fixed;
+top:0;
+width: 100%;
+height: 200px;
+left: 0;
+background-color: white;
+z-index: 1;
+}
+.head .heada{
+font-size: 40px;
+}
+.head{
+position: relative;
+width: 100%;
+top: 70px;       
+left: 80px;
+}  
+.head-bottum{
+position: relative;
+top: 25px;
+left: 570px;
+}
+.block{
+height: 200px;
+}
+.picture{
+display: flex;
+position: relative;
+height: 600px;
+}
+.picture .pic-a img{
+
+width: 780px;
+float: left;
+height: 530px;
+
+}    
+.picture .pic-text .btn-a{
+background-color: black;
+color: white;
+border: none;
+width: 130px; 
+height: 35px;
+border-radius: 8%;
+}
+.picture .pic-text .btn-a:hover{
+background-color: yellow;
+color: black;
+}
+.picture .pic-text{
+margin: 50px 30px;
+font-size: 70px;
+}
+.picture .pic-color{
+color: yellow;
+font-size: 50px;
+}
+.six{
+    display: flex;
+}
+.six-fresh{
+    position: relative;
+    width: 100%;  
+    margin: 50px 10px;
+    padding: 0 20px;
+}
+.six p{
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    top:-60px;
+    color:black;
+}
+.six-fresh:hover{
+    /* border: black solid; */
+    transform: .9s;
+    box-shadow: 0 0 10px gray;
+    cursor: pointer;
+    color: rgb(247, 247, 20);
+}
+.six-fresh img{
+    width: 100%;
+    height: 100%;
+}
+.pictwo{
+    display: flex;
+    /* height: 100%; */
+}
+.pictwo img{
+    width: 100%;
+}
+.pictwo .pictwo-left{
+    position: relative;
+    padding: 0 20px 0 80px;
+}
+.pictwo .pictwo-left p{
+    position: absolute;
+    bottom: 150px;
+    right: 210px;
+    font-size: 35px;
+    color: white;
+}
+.pictwo .pictwo-left a{
+    position: absolute;
+    bottom: 100px;
+    /* left: 0; */
+    right: 450px;
+    font-size: 20px;
+    color: white;
+}
+.pictwo .pictwo-right{
+    position: relative;
+}
+.pictwo .pictwo-right .pictwo-top p{
+    position: absolute;
+    bottom: 480px;
+    left: 40px;
+    color: white;
+    font-size: 35px;
+}
+.pictwo .pictwo-right .pictwo-top a{
+    position: absolute;
+    bottom: 450px;
+    left: 40px;
+    color: white;
+    font-size: 20px;
+}
+.pictwo .pictwo-right .pictwo-bottom p{
+    position: absolute;
+    bottom: 250px;
+    left:30px;
+    color: white;
+    font-size: 30px;
+}
+.pictwo .pictwo-right .pictwo-bottom div{
+    position: absolute;
+    bottom: 210px;
+    left:25px;
+    color: white;
+    font-size: 15px;
+}
+.pictwo .pictwo-right .pictwo-bottom a{
+    position: absolute;
+    width: 90px;
+    bottom: 150px;
+    left: 30px;
+    color: white;
+    font-size: 20px;
+}
+.topptwo{
+    height: 100px;
+    font-size: 20px;
+    margin: auto;
+    line-height: 120px;
+    text-align: center;
+    /* background-color: turquoise; */
+}
+.four{
+    display: flex;
+    /* background-color: tomato; */
+    height: 450px;
+}
+.four .six-pic{
+    position: relative;   
+    width: 100%; 
+    height: 200px; 
+    margin: 50px 20px;
+    padding: 0px 30px;
+    background-color: beige;  
+}
+.four .six-pic:hover{
+    cursor: pointer;
+}
+.four img{   
+    width: 100%;
+    height: 100%;
+}
+
+.four a{
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+    margin: 20px 0;
+}
+.four a:hover{
+    color: yellow;
+}
+.four button{
+    font-size: 12px;
+    width: 120px;
+    margin: 10px 0;
+    height: 25px;
+    border-radius: 8%;
+    border: none; 
+}
+.four button:hover{
+    background-color: yellow;
+}
+.picblue{
+    position: relative;
+    right: -400px;
+    background-color: white;
+    height: 500px;
+    width: 900px;
+}
+.picblue img{
+    width: 100%;
+    height: 100%;
+}
+.picblue .picblue-left{
+    position: absolute;
+    top: -70px;
+    left: -300px;
+    background-color: white;
+    width: 600px;
+    height: 500px;
+    text-align: center;
+     /* border: solid ;  */
+    box-shadow: 0 0 10px gray;
+}
+.picblue .picblue-left p{
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;   
+    font-size: 80px;
+}
+.picblue .picblue-left button{
+    position: absolute;
+    top: 320px;
+    left: 250px;
+    width: 120px;
+    height: 35px;
+    font-size: 10px;
+    background-color: yellow;
+    border-radius: 5%;
+    border: none;
+    box-shadow: 0px 0px 5px gray;
+}
+.picblue .picblue-left button:hover{
+    background-color: black;
+    color: white;
+}
+.picthree{
+    display: flex;
+    /* width: 100%;
+    height: 400px; */
+    /* background-color: green; */
+}
+.picthree .picorange{
+    display: flex;
+    position: relative;
+    padding: 70px 10px 30px 90px;
+    width: 700px;
+}
+.picthree img{
+    width: 100%;
+}
+.picthree .picorange p{
+    position: absolute;
+    bottom: 140px;
+    left: 100px;
+    font-size: 30px;
+    color: white;
+}
+.picthree .picorange a{
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    font-size: 18px;
+    color: white;
+}
+.picthree .picorange a:hover{
+    color: black;
+}
+.picfourr h3{
+    position: relative;
+    /* color: blue; */
+    /* background-color: blue; */
+    text-align: center;
+    font-size: 30px;
+   
+}
+.four-top .picfour img{
+    width: 100%;
+    height: 100%;    
+}
+.four-top{
+    position: relative;
+    display: flex;
+}
+.four-buttom{
+    position: relative;
+    display: flex;
+}
+.picfourr {
+    margin-top: 100px;
+}
+.picfourr .picfour a{
+    color: black; 
+    text-decoration: none;
+}
+.picfourr .picfour a:hover{
+    color: yellow; 
+}
+.picfourr .picfour p{
+    line-height: 1.8;
+}
+.picfourr button{
+    /* margin-top: 6px; */
+    /* margin-bottom: 10px; */
+    width: 140px;
+    height: 30px;
+    border: none;
+    color: black;
+}
+.picfourr button:hover{
+    background-color: yellow;
+    border: none;
+}
+.picfourr .picfour{
+    width: 150px;
+    /* height: 100px; */
+    margin: 20px;
+}
+.picfourr .four-top{
+    width: 100%;
+    height: 350px;
+}
+.picfourr .four-buttom{
+    /* background-color: green; */
+    width: 100%;
+    height: 350px;
+    margin-top: 40px;
+}
+.picfourr img{
+    background-color: rgb(182, 179, 179);
+    width: 100%;
+
+    /* height: 320px; */
+}
+/* .picfourr .four-buttom img{
+    background-color: rgb(182, 179, 179);
+    width: 100%;
+} */
+
+.four-top .picfour{
+    width: 100%;
+    padding: 20px;
+}
+
+.four-buttom .picfour{
+    width: 100%;
+    padding: 20px;
+}
+.Featured{
+    /* background-color: blue; */
+    font-size: 25px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    padding-top: 40px;
+}
+.picfinally{
+    display: flex;
+}
+.picfinally .picfinally-three{
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    margin: auto;
+    margin-top: 0;
+
+}
+.picfinally p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    width: 350px;
+}
+.picfinally a{
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+}
+.picfinally a:hover{
+    color: yellow;
+}
+.text-buttom{
+    display: flex;
+    background-color:rgb(235, 223, 223);
+    height: 450px;
+}
+.text-buttom .text-four{
+    /* background-color: green; */
+    position: relative;
+    width: 255px;
+    margin-left: 90px;
+    margin-right: 0;
+    font-size: 15px;
+    margin-top: 60px;    
+}
+.text-buttom .text-four li{
+    margin-top: 20px;
+}
+.buttom{
+    background-color: yellow;
+    height: 51px;
+    
+}
+.buttom p{
+    text-align: center;
+    position: relative;
+    padding-top: 20px;
+
+}
+

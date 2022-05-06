@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #cities,
+        #district {
+            font-size: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            border: #faa solid 1px;
+            background-color: #faa;
+            color: white;
+            border-radius: 5px;
+            padding: 3px  10px;
+        }
+        p{
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="cities" id="cities" onchange="cityselectchange(event)">
+    </select>
+
+    <select name="district" id="district" onchange="districtselect(event)">
+    </select>
+    <button onclick="submit()">提交資料</button>
+    <p id="p"></p>
+    <!-- <select name="cities" id="cities">
+        <option value="">---請選擇縣市---</option>
+        <option value="taipei">台北</option>
+        <option value="taoyuan">桃園</option>
+        <option value="taichung">台中</option>
+    </select>
+
+    <select name="district" id="district" onchange="on()">
+        <option value="">---請選擇行政區---</option>
+        <option value="taipei01">中正區</option>
+        <option value="taipei02">萬華區</option>
+        <option value="taipei03">信義區</option>
+    </select> -->
+    <script>
+
+        var cityselect = document.getElementsByName('cities');
+        var districtselect = document.getElementsByName('district');
+        var zipArray;
+
+        const url = "https://raw.githubusercontent.com/apprunner/FileStorage/master/TaiwanAddress_Simple.json";
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                zipArray = data;
+                for (let i = 0; i < data.length; i++) {
+                    let option1 = document.createElement('option');
+                    option1.value = i;
+                    option1.text = data[i].City;
+
+                    cityselect[0].add(option1, null);
+
+                    for (let j = 0; j < data[i].Districts.length; j++) {
+                        let option2 = document.createElement('option');
+                        option2.value = j;
+                        option2.text = data[i].Districts[j].District;
+
+                        districtselect[0].add(option2, null);
+                    }
+                }
+                let op1 = document.createElement('option');
+                op1.text = '---請選擇縣市---';
+                op1.setAttribute('selected', '');
+                cityselect[0].add(op1, 0);
+
+                let op2 = document.createElement('option');
+                op2.text = '---請選擇區域---';
+                op2.setAttribute('selected', '');
+                districtselect[0].add(op2, 0);
+            })
+            .catch(ex => {
+                error
+            });
+        function cityselectchange(event) {
+            console.log(cityselect[0].selectedOptions[0]);
+            selectedCityValue = cityselect[0].selectedOptions[0].value;
+            selectedCityText = cityselect[0].selectedOptions[0].text;
+
+            // console.log(event.target);
+            // debugger;
+            let districtarray = zipArray.find(c => c.City == selectedCityText).Districts;
+            console.log(districtarray);
+            districtselect[0].innerHTML = "";
+
+
+            for (let j = 0; j < districtarray.length; j++) {
+                let option2 = document.createElement('option');
+                option2.value = j;
+                option2.text = districtarray[j].District;
+
+                districtselect[0].add(option2, null);
+            }
+        }
+        let p = document.getElementById('p');
+        districtselect[0].addEventListener('change', function(){
+            
+            p.textContent = cityselect[0].selectedOptions[0].text + ',' + districtselect[0].selectedOptions[0].text;
+            
+        });
+
+        function submit() {
+            let h4 = document.createElement('h4');
+            let formData = new FormData();
+            FormData.append("City", citySelect.selectedOptions[0].text);
+            FormData.append("District", districtselect.selectedOptions[0].text);
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "");
+            xhr.send(formData);
+  
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>英雄聯盟</title>
+    <style>
+        h1 {
+            line-height: 200px;
+            /*設定字體範圍高度*/
+            background-color: rgb(66, 64, 64);
+            color: rgb(238, 172, 5);
+            text-align: center;
+            font-size: 60px;
+        }
+        .hover-color:hover{
+            background-color: #ccc;
+        }
+       
+    </style>
+</head>
+
+<body>
+
+    <h1>LEAGUE OF LEGENDS</h1>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <div class="container">
+        <div class="row">
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let row = document.querySelector('.row');
+        let modal_body = document.getElementById('modal-body');
+        let modal_head = document.getElementById('exampleModalLabel')
+        $.ajax({
+            dataType: "json",
+            url: "https://raw.githubusercontent.com/an56665666/HTMLHomework1/master/LOLJASON.json",
+            type: "Get",
+            success: function (response) {    
+                console.log(response);     
+                for (let i = 0; i <= response.length; i++) {
+                    
+                    let img = document.createElement('img');
+                    img.src = response[i].icon;
+                    let text = document.createElement('h5');
+                    text.textContent = response[i].name;
+
+                    let col = document.createElement('col');
+                    col.className = 'col text-center hover-color';
+                    col.appendChild(img);
+                    col.appendChild(text);
+                    row.appendChild(col);
+
+                    col.addEventListener('click', () => {
+                        $('#exampleModal').modal('toggle');
+                        
+                        modal_body.textContent = "";
+                        modal_head.textContent = response[i].name;
+
+                        for (let item in response[i].stats) {
+                            var p = document.createElement('p');
+                            p.innerHTML = (`${item}:${response[i].stats[item]}`);
+                            modal_body.appendChild(p);
+                        }
+
+                    })
+                }
+            }
+
+        })
+
+    </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

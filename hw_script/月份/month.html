@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Month</title>
+    <style>
+        .container {
+            margin-top: 20px;
+            width: 100%;
+            height: 350px;
+            background-color: #fff;
+
+        }
+
+        .body-list ul {
+            width: 100%;
+            font-size: 20px;
+            font-family: arial;
+            font-weight: bold;
+
+        }
+
+        .body-list ul li {
+            width: 14%;
+            height: 70px;
+            line-height: 70px;
+            list-style-type: none;
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            border: #aaf solid .5px;
+            border-collapse: collapse;
+        }
+
+        li:hover {
+            cursor: pointer;
+        }
+
+        .lightgray {
+            color: #aaf;
+        }
+
+        .darkgrey {
+            color: gray;
+        }
+
+        .pink {
+
+            text-align: center;
+            color: #faf;
+        }
+
+        a:hover {
+            color: #faf;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h1 class="pink" id="title">Month</h1>
+            <h2 class="pink" style="font-size: 20px;" id="year">Year</h2>
+            <a href="" id="prev" style="font-size: 20px; margin-left: 40px;">Prev Month</a>
+            <a href="" id="next" style="float: right; font-size: 20px;  margin-right: 20px;">Next Month</a>
+        </div>
+        <div class="body">
+            <div class="lightgray body-list">
+                <ul>
+                    <li>MON</li>
+                    <li>TUE</li>
+                    <li>WED</li>
+                    <li>THU</li>
+                    <li>FRI</li>
+                    <li>SAT</li>
+                    <li>SUN</li>
+                </ul>
+            </div>
+            <div class="darkgrey body-list">
+                <ul id="days">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+
+        var holder = document.getElementById("days");
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var title = document.getElementById("title");
+        var year = document.getElementById("year");
+
+        var my_date = new Date();//"April 17, 2020 03:04"
+        var my_year = my_date.getFullYear();
+        var my_month = my_date.getMonth();
+        var my_day = my_date.getDate(); //22
+
+        //獲得某年某月第一天禮拜幾
+        function dayStart(month, year) {
+            var tmpDate = new Date(year, month, 1);
+            return (tmpDate.getDay());
+        }
+        //求是不是閏年
+        function daysMonth(month, year) {
+            var tmp = year % 4;
+            if (tmp == 0) {
+                return (month_olympic[month]);
+            } else {
+                return (month_normal[month]);
+            }
+        }
+
+        function refreshDate() {
+            var str = "";
+            var totalDay = daysMonth(my_month, my_year);//該月總天數
+            var firstDay = dayStart(my_month, my_year);//該月第一天是星期幾
+            var myclass;
+            for (var i = 1; i < firstDay; i++) {
+                str += "<li></li>";//為起始日之前的日期創建空白節點
+            }
+
+            for (var i = 1; i <= totalDay; i++) {
+                if ((i < my_day && my_year == my_date.getFullYear() && my_month == my_date.getMonth()) || my_year < my_date.getFullYear() || (my_year == my_date.getFullYear() && my_month < my_date.getMonth())) {
+                    myclass = " class='lightgrey'";
+                } else if (i == my_day && my_year == my_date.getFullYear() && my_month == my_date.getMonth()) {
+                    myclass = " class='pink pinkbox'";
+                } else {
+                    myclass = " class='darkgrey'";
+                }
+                // str += "<li" + myclass + ">" + i + "onclick=activeModal()" + "</li>";
+                str += `<li ${myclass}>${i}</li> `;
+                //'<li class='lightgrey'> 3 <li>''<li class='lightgrey'> 4 <li>''<li class='lightgrey'> 5 <li>'
+            }
+            holder.innerHTML = str;//設置日期顯示
+            title.innerHTML = month_name[my_month];
+            year.innerHTML = my_year;
+            console.log(holder);
+        }
+        refreshDate();
+
+        var current;
+        let lis = document.querySelectorAll('li');
+        for (let li of lis) {
+            li.addEventListener('click', function () {
+                $('#exampleModal').modal('toggle');
+                current = li;
+            });
+
+            let btn = document.querySelector('.modal-footer button');
+            btn.onclick = close;
+        }
+        // lis.forEach((item, index) => {
+        //     item.addEventListener('click', function () {
+        //         $('#exampleModal').modal('toggle');
+        //         current = index;
+
+        //         let btn = document.querySelector('.modal-footer button');
+        //         btn.onclick = close;
+        //     });
+        // });
+
+        function close() {
+            let input = document.querySelector('input');
+            current.innerText += input.value
+        }
+
+        prev.onclick = function (e) {
+            e.preventDefault();
+            my_month--;
+            if (my_month < 0) {
+                my_year--;
+                my_month = 11;
+            }
+            refreshDate();
+        }
+        next.onclick = function (e) {
+            e.preventDefault();
+            my_month++;
+            if (my_month > 11) {
+                my_year++;
+                my_month = 0;
+            }
+            refreshDate();
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

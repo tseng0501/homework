@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <title>滑動圖片拼圖</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #gamepuzzle{
+            width: 100%;
+        }
+        #puzzle {
+            width: 480px;
+            height: 480px;
+            border: solid 5px #faa;
+            padding: 0px;
+            margin: auto;
+
+        }
+        .pic {
+            width: 118px;
+            height: 118px;
+            border-top: solid 1px white;
+            border-left: solid 1px white;
+            border-right: solid 1px gray;
+            border-bottom: solid 1px gray;
+            float: left;
+
+        }
+    </style>
+  
+</head>
+
+
+
+<body>
+    <div id=gamepuzzle>
+        <h1>Puzzle</h1>
+        <div id="puzzle"></div>
+        <input type="button">
+        <!-- <div style="width: 15px; border:  solid 1px red; padding: 0;">
+        <img src="one.jpg" style="margin-left: -15px;" alt=""></div> -->
+    </div>
+
+  <script type="">
+    $(function(){
+        var position = {};
+        for(var i = 0; i < 16; i++)
+        {
+            $("#puzzle").append("<div class='pic' id='pic_id" + i + "'></div>");//<img src = 'cat.jpg'/>
+            var row = parseInt(i / 4);
+            var col = i % 4;
+            // $("#pic_id" + i + "img").css("margin-left",col *-120 +1).css("margin-top", row * -120 + 1);
+            position[i] = {row:row, col:col};
+        }
+        $("#pic0 img").remove();
+        function getNearpos(i) {
+            var pool =[];
+            var row = position[i].row, col = position[i].col;
+            if(row > 0)
+            pool.push((row - 1) * 4 + col);
+            if(row < 4)
+            pool.push((row + 1)* 4 + col);
+            if(col > 0)
+            pool.push(i - 1);
+            if(col < 4)
+            pool.push(i + 1);
+            return pool;
+            
+        }
+
+    });
+    $(".pic").click(function () {
+        var cells = $("#puzzle div");
+        var i = cells.index(this);
+        var tocheck = getNearpos(i);
+        while (tocheck.length > 0){
+            var j = tocheck.pop();
+            if(cells.eq(j).attr("id") =="pic0")
+            {
+                if(i > j){
+                    var k = j; j = i; i = k;
+                }
+                var ahead = cells.eq(i);
+                var behind = cells.eq(j);
+                var behindPrev = behind.prev();
+                if(Math.abs(i - j) == 1)
+                behind.after(ahead);
+                else{
+                    ahead.after(behind);
+                    behindPrev.after(ahead);
+                }
+                break;
+            }
+        }
+        
+    });
+    $("input:button").click(function () {
+        for(var i = 0;i < 500; i++){
+            var tomove = getNearpos(cells.index($("#pic")[0]));
+            cells.eq(toMove[
+                parseInt(Math.random()*toMove.length)
+            ]).click();
+        }
+      });
+    
+
+</script>
+</body>
+
+</html>

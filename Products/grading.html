@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="product_style.css">
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+    <div class="container allblock" id="grading">
+        <div class="row">
+            <div class="col-12 col-xl-3">
+                <h3 class="title_name">Comments</h3>
+            </div>
+            <div class="col-12 col-xl-9 grading_content">
+                <div>
+                    <div class="grading_number col-12">
+                        <span class="grading_text">5</span>
+                    </div>
+                    <div class="col-12">
+                        <button class="myBtn" type="button" id="myBtn" style="margin-bottom: 10px;" data-toggle="modal"
+                            data-target="#exampleModal">I want to comment!</button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal faded" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">My Comment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" style="color: #e7e7e7;">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea name="Text1" cols="40" rows="5" style="width: 100%;"></textarea>
+                                    <div class="grading_circle">
+                                        <div class="star-rating">
+                                            <span class="fa fa-star-o" data-rating="1"></span>
+                                            <span class="fa fa-star-o" data-rating="2"></span>
+                                            <span class="fa fa-star-o" data-rating="3"></span>
+                                            <span class="fa fa-star-o" data-rating="4"></span>
+                                            <span class="fa fa-star-o" data-rating="5"></span>
+                                            <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="modal_btn" data-dismiss="modal">Abort</button>
+                                    <button type="button" class="modal_btn btn_yellow">Comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+
+
+
+                    <!-- <div class="grading_comment">
+                        <div class="col-12 col-xl-12 pl-0 pr-0">
+                            <ul class="grading_ul">
+                                <li class="grading_li col-12 col-md-4">
+                                    <div class="grading_padding">
+                                        <div class="author_content">
+                                            <p style="font-size: 15px;">Game informer</p>
+                                            <p class="author_card_content"><span>by </span><span>Matt
+                                                    Miller</span>
+                                            </p>
+                                        </div>
+                                        <div class="author_card">
+                                            <div class="autor_card_date" style="font-size: 15px;">8/10</div>
+                                            <p class="author_card_content">A lot has changed in the FPS game
+                                                scene
+                                                since
+                                                2012, when the last numbered entry of Borderlands arrived in our
+                                                gaming
+                                                machines. In all the ways that matter, the sequel
+                                                blueprint established in that well-loved release,</p>
+                                        </div>
+                                        <div class="author_card_star star-rating">
+                                            <span class="fa fa-star-o" data-rating="1"></span>
+                                            <span class="fa fa-star-o" data-rating="2"></span>
+                                        </div>
+                                        <div class="author_card_link">
+                                            <span>READ FULL REVIEW</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="grading_li col-12 col-md-4">
+                                    <div class="grading_padding">
+
+                                        <div class="author_content">
+                                            <p style="font-size: 15px;">Game informer</p>
+                                            <p class="author_card_content"><span>by </span><span>James
+                                                    Duggan</span>
+                                            </p>
+                                        </div>
+                                        <div class="author_card">
+                                            <div class="autor_card_date" style="font-size: 15px;">8/10</div>
+                                            <p class="author_card_content">A lot has changed in the FPS game
+                                                scene
+                                                since 2012, when the last numbered entry of Borderlands arrived
+                                                in
+                                                our
+                                                gaming machines. In all established in that well-loved release,
+                                            </p>
+                                        </div>
+                                        <div class="author_card_star star-rating">
+                                            <span class="fa fa-star-o" data-rating="1"></span>
+                                            <span class="fa fa-star-o" data-rating="2"></span>
+                                        </div>
+                                        <div class="author_card_link">
+                                            <span>READ FULL REVIEW</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="grading_li col-12 col-md-4">
+                                    <div class="grading_padding">
+                                        <div class="author_content">
+                                            <p style="font-size: 15px;">Game informer</p>
+                                            <p class="author_card_content"><span>by </span><span>Daniel
+                                                    Bloodworth</span>
+                                            </p>
+                                        </div>
+                                        <div class="author_card">
+                                            <div class="author_card_date" style="font-size: 15px;">8/10</div>
+                                            <p class="author_card_content">A lot has changed in the FPS game
+                                                scene
+                                                since 2012, when the last numbered entry of Borderlands arrived
+                                                in
+                                                our
+                                                gaming machines. In all
+                                                closely to
+                                                the blueprint established in that well-loved release,</p>
+                                        </div>
+                                        <div class="author_card_star star-rating">
+                                            <span class="fa fa-star-o" data-rating="1"></span>
+                                            <span class="fa fa-star-o" data-rating="2"></span>
+                                            <span class="fa fa-star-o" data-rating="3"></span>
+                                        </div>
+                                        <div class="author_card_link">
+                                            <span>READ FULL REVIEW</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

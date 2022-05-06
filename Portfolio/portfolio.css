@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: 0;   
+    font-family: 微軟正黑體; 
+}
+body{
+    /* background-color: rgb(61, 58, 58); */
+    background-color: #171717;
+}
+.myportfolio {
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    font-family: 微軟正黑體;
+    color: #4f4f52;
+    position: absolute;
+    top: 40px;
+    /* bottom: 70px; */
+    left: 0;
+    right: 0;
+}
+.top{
+    margin-bottom: 30px;
+}
+.card_context{
+    background-color: #171717;
+}
+.context{
+    background-color: rgb(39, 39, 39);
+    margin-bottom: 30px;
+}
+.connect {
+    text-align: center;
+    color: white;
+}
+.down {
+    margin-top: 80px;
+    height: 300px;
+    color: white;
+}
+.lean {
+    color: white;
+}
+.card-title{
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+a {
+    width: 200px;
+}
+.github{
+    color: white;
+    text-decoration: none;
+}
+.footer_p{
+    color: #e6d9d9;
+}
+.github:hover{
+    color: gray;
+    text-decoration: none;
+}
+.btn_read{
+    background-color: rgb(189, 117, 189);
+    border: rgb(189, 117, 189) solid 1px;  
+}
+.btn_read:hover{
+    background-color: rgb(211, 140, 211);
+}
+@media screen and (min-width: 768PX){
+    .myportfolio{
+        font-size: 50px;
+        top: 50px;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 992PX){
+    .myportfolio{
+        font-size: 70px;
+        top: 100px;
+        left: 0;
+        right: 0;
+    }
+}
